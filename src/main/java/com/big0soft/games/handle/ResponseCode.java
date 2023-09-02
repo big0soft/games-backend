@@ -71,6 +71,7 @@ public  record ResponseCode(String message, int stateCode) {
     public static final int CREDENTIAL_ERROR = 1704;
 
     public static final int UID_NOT_PROVIDED = 1801;
+    public static final int UID_EMPTY = 1802;
 
 
     public static boolean isUsernameError(int code) {

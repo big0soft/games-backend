@@ -18,7 +18,7 @@ public class AuthController {
     @PostMapping(
             value = "/login"
     )
-    public Map<String,UserDto> login(@RequestBody UserEntity user) {
+    public Map<String,UserDto> login(@RequestBody UserEntity user,@RequestParam String provider) {
         Map<String, UserDto> map = new HashMap<>();
         map.put("data", userRepository.login(user));
         return map;

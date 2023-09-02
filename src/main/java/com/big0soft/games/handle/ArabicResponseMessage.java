@@ -14,6 +14,8 @@ public class ArabicResponseMessage extends IResponseMessage {
         map.put(USERNAME_NOT_REGISTERED, new ResponseCode("لم يتم تسجيل اسم لاعب", ResponseCode.USERNAME_NOT_REGISTERED));
         map.put(USER_REGISTERED, new ResponseCode("اسم لاعب مسجل", ResponseCode.USERNAME_EXISTS));
         map.put(USERNAME_ALREADY_EXISTS, new ResponseCode("اسم المستخدم مسجل مسبقا", ResponseCode.USERNAME_EXISTS));
+        map.put(UID_EMPTY, new ResponseCode("اي دي الجهاز خطأ", ResponseCode.UID_EMPTY));
+        map.put(PASSWORD_EMPTY, new ResponseCode("كلمة فارغة", ResponseCode.PASSWORD_EMPTY));
         map.put(FAILED_TO_REGISTER_USER, new ResponseCode("فشل تسجيل المستخدم", ResponseCode.USERNAME_NOT_REGISTERED));
         map.put(PASSWORD_NOT_PROVIDED, new ResponseCode("الرجاء ادخال كلمة السر", ResponseCode.PASSWORD_NOT_PROVIDED));
         map.put(EMAIL_NOT_PROVIDED, new ResponseCode("لم يتم توفير الايميل", ResponseCode.EMAIL_NOT_PROVIDED));
