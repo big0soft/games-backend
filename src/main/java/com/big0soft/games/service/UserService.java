@@ -69,6 +69,7 @@ public class UserService {
     }
 
     public UserDto login(UserEntity user, String provider) {
+
         emailValidation(user);
         if (provider.equals("google")) {
             return new UserDto(googleLogin(user));
