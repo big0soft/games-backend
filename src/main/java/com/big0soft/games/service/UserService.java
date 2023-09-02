@@ -82,7 +82,7 @@ public class UserService {
         return new UserDto(usernameLogin(user));
     }
 
-    UserEntity googleLogin(UserEntity user) {
+  public   UserEntity googleLogin(UserEntity user) {
         ResponseCode responseCode = responseMessage.getResponseCode(USER_NOT_FOUND);
         return userRepository.findByEmail(user.getEmail())
                 .orElseThrow(() -> new NotFoundException(responseCode.message(), responseCode.stateCode()));
