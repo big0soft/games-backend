@@ -28,7 +28,7 @@ public class UserService {
         }
         if (userRepository.existsByEmail(user.getEmail())) {
             ResponseCode responseCode = responseMessage.getResponseCode(USERNAME_ALREADY_EXISTS);
-            throw new EmailExistsException(responseCode.message(),responseCode.stateCode());
+            throw new EmailExistsException(responseCode.message(), responseCode.stateCode());
         }
         passwordValidation(user);
         uidValidation(user);
@@ -42,37 +42,49 @@ public class UserService {
     private void emailValidation(UserEntity user) {
         if (!isEmail(user.getEmail())) {
             ResponseCode responseCode = responseMessage.getResponseCode(USERNAME_ALREADY_EXISTS);
-            throw new EmptyValueException(responseCode.message(),responseCode.stateCode());
+            throw new EmptyValueException(responseCode.message(), responseCode.stateCode());
         }
     }
+
     private void uidValidation(UserEntity user) {
 
         if (isEmpty(user.getUid())) {
             ResponseCode responseCode = responseMessage.getResponseCode(UID_EMPTY);
-            throw new EmptyValueException(responseCode.message(),responseCode.stateCode());
-        }
-    }
-    private void usernameValidation(UserEntity user) {
-        if (isEmpty(user.getUsername())) {
-            ResponseCode responseCode = responseMessage.getResponseCode(USERNAME_EMPTY);
-            throw new EmptyValueException(responseCode.message(),responseCode.stateCode());
-        }
-    }
-    private void passwordValidation(UserEntity user) {
-        if (isEmpty(user.getPassword())) {
-            ResponseCode responseCode = responseMessage.getResponseCode(PASSWORD_EMPTY);
-            throw new EmptyValueException(responseCode.message(),responseCode.stateCode());
+            throw new EmptyValueException(responseCode.message(), responseCode.stateCode());
         }
     }
 
-    public UserDto login(UserEntity user) {
+    private void usernameValidation(UserEntity user) {
+        if (isEmpty(user.getUsername())) {
+            ResponseCode responseCode = responseMessage.getResponseCode(USERNAME_EMPTY);
+            throw new EmptyValueException(responseCode.message(), responseCode.stateCode());
+        }
+    }
+
+    private void passwordValidation(UserEntity user) {
+        if (isEmpty(user.getPassword())) {
+            ResponseCode responseCode = responseMessage.getResponseCode(PASSWORD_EMPTY);
+            throw new EmptyValueException(responseCode.message(), responseCode.stateCode());
+        }
+    }
+
+    public UserDto login(UserEntity user, String provider) {
         emailValidation(user);
-        passwordValidation(user);
+        if (provider.equals("google")) {
+            return new UserDto(googleLogin(user));
+        }
         if (isEmail(user.getEmail())) {
             return new UserDto(emailLogin(user));
         }
+        passwordValidation(user);
         usernameValidation(user);
         return new UserDto(usernameLogin(user));
+    }
+
+    UserEntity googleLogin(UserEntity user) {
+        ResponseCode responseCode = responseMessage.getResponseCode(USER_NOT_FOUND);
+        return userRepository.findByEmail(user.getEmail())
+                .orElseThrow(() -> new NotFoundException(responseCode.message(), responseCode.stateCode()));
     }
 
 

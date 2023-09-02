@@ -20,7 +20,7 @@ public class AuthController {
     )
     public Map<String,UserDto> login(@RequestBody UserEntity user,@RequestParam String provider) {
         Map<String, UserDto> map = new HashMap<>();
-        map.put("data", userRepository.login(user));
+        map.put("data", userRepository.login(user,provider));
         return map;
     }
 
