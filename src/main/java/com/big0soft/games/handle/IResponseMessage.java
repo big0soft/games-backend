@@ -8,7 +8,9 @@ public abstract class IResponseMessage {
 
     public static final String ADS_ERROR = "ads_error";
     public static final String PASSWORD_NOT_PROVIDED = "PASSWORD_NOT_PROVIDED";
+    public static final String PASSWORD_EMPTY = "PASSWORD_EMPTY";
     public static final String USERNAME_ALREADY_EXISTS = "USERNAME_ALREADY_EXISTS";
+    public static final String USERNAME_EMPTY = "USERNAME_EMPTY";
     public static final String USER_NOT_FOUND = "USER_NOT_FOUND";
     public static final String USERNAME_AVAILABLE = "USERNAME_AVAILABLE";
     public static final String USER_NOT_PROVIDED = "USER_NOT_PROVIDED";
@@ -16,6 +18,7 @@ public abstract class IResponseMessage {
     public static final String EMAIL_ALREADY_EXISTS = "EMAIL_ALREADY_EXISTS";
     public static final String FAILED_TO_REGISTER_USER = "FAILED_TO_REGISTER_USER";
     public static final String UID_NOT_PROVIDED = "UID_NOT_PROVIDED";
+    public static final String UID_EMPTY = "UID_EMPTY";
     public static final String GAME_NOT_FOUND = "GAME_NOT_FOUND";
     public static final String GAME_NOT_PROVIDED = "GAME_NOT_PROVIDED";
 

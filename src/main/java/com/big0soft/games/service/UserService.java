@@ -48,19 +48,19 @@ public class UserService {
     private void uidValidation(UserEntity user) {
 
         if (isEmpty(user.getUid())) {
-            ResponseCode responseCode = responseMessage.getResponseCode(USERNAME_ALREADY_EXISTS);
+            ResponseCode responseCode = responseMessage.getResponseCode(UID_EMPTY);
             throw new EmptyValueException(responseCode.message(),responseCode.stateCode());
         }
     }
     private void usernameValidation(UserEntity user) {
         if (isEmpty(user.getUsername())) {
-            ResponseCode responseCode = responseMessage.getResponseCode(USERNAME_ALREADY_EXISTS);
+            ResponseCode responseCode = responseMessage.getResponseCode(USERNAME_EMPTY);
             throw new EmptyValueException(responseCode.message(),responseCode.stateCode());
         }
     }
     private void passwordValidation(UserEntity user) {
         if (isEmpty(user.getPassword())) {
-            ResponseCode responseCode = responseMessage.getResponseCode(USERNAME_ALREADY_EXISTS);
+            ResponseCode responseCode = responseMessage.getResponseCode(PASSWORD_EMPTY);
             throw new EmptyValueException(responseCode.message(),responseCode.stateCode());
         }
     }
